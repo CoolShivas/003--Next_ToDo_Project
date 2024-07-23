@@ -1,9 +1,9 @@
-
+import TopicList from "@/components/TopicList";
 
 const HomePage = () => {
   return (
     <>
-    <h1> Welcome to the Home page. how </h1>
+    <TopicList></TopicList>
     </>
   )
 }
