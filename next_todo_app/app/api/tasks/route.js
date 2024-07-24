@@ -14,3 +14,17 @@ export async function GET() {
   const tips = await ToDoTopics.find();
   return NextResponse.json({ tips });
 }
+
+export async function DELETE(request) {
+  const identity = request.nextUrl.searchParams.get("id");
+  await mongDbConnect();
+  await ToDoTopics.findByIdAndDelete(identity);
+  return NextResponse.json(
+    {
+      message: "ToDo Task Deleted",
+    },
+    {
+      status: 200,
+    }
+  );
+}
