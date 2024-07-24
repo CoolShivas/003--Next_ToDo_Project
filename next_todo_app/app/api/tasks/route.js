@@ -8,3 +8,9 @@ export async function POST(request) {
   await ToDoTopics.create({ title, description });
   return NextResponse.json({ message: "Task Created" }, { status: 201 });
 }
+
+export async function GET() {
+  await mongDbConnect();
+  const tips = await ToDoTopics.find();
+  return NextResponse.json({ tips });
+}
