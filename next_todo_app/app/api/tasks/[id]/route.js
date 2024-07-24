@@ -16,3 +16,17 @@ export async function PUT(request, { params }) {
     }
   );
 }
+
+export async function GET(request, { params }) {
+  const { identy } = params;
+  await mongDbConnect();
+  const topic = await ToDoTopics.findOne({ _id: identy });
+  return NextResponse.json(
+    {
+      topic,
+    },
+    {
+      status: 200,
+    }
+  );
+}
